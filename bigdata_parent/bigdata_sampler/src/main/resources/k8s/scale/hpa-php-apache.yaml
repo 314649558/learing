@@ -1,0 +1,12 @@
+apiVersion: autoscaleing/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: php-apache
+spec:
+  scaleTargetRef:
+    appVersion: v1
+    kind: ReplicationController
+    name: php-apache
+  minReplicas:  1
+  maxReplicas:  10
+  targetCPUUtilizationPercentage: 50
