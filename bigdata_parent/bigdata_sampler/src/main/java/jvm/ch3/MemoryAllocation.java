@@ -2,6 +2,9 @@ package jvm.ch3;
 
 import jvm.JVMConstants;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MemoryAllocation {
 
@@ -56,7 +59,7 @@ public class MemoryAllocation {
      * DESC:
      *    测试长期存货的对象是否会进入老年代，可以改变这个参数的值看效果
      */
-    public static void testTenuringThreshold(){
+    public static void testTenuringThreshold() throws Exception{
         byte[] allocation1,allocation2,allocation3;
 
         allocation1=new byte[JVMConstants._1MB / 4];
@@ -66,12 +69,22 @@ public class MemoryAllocation {
         allocation3=null;
         allocation3=new byte[4 * JVMConstants._1MB];
 
+        List lst=new ArrayList();
+        while (true){
+            lst.add(new byte[1 * JVMConstants._1MB]);
+            Thread.sleep(1000);
+        }
+
+
+
+
+
     }
 
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         //testMemoryAllocation ();
         //testPretenureSizeThreshold();
         testTenuringThreshold();

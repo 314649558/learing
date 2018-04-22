@@ -9,6 +9,7 @@ class MyRunnable(blockingQueue:BlockingQueue[String]) extends Runnable{
       if (blockingQueue.size() > 0) {
         println("---" + blockingQueue.poll())
       }
+      println("--------------------------------------------")
       Thread.sleep(2000)
 
     }
