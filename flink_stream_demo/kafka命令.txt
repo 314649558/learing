@@ -1,0 +1,86 @@
+﻿
+--------------------------------flink---------------------------------------------
+yarn-session.sh -jm 2048 -n 2 -s 4 -nm testflink -tm 2048 -d
+
+flink run -j bigdata_flink-1.0-SNAPSHOT.jar -c com.bigdata.flink.java.demo.StreamWordCountDemo -p 2 -yid application_1532516463978_0001 -nm  -d
+
+
+flink run -j app_stm_002-0.0.1-SNAPSHOT.jar -c com.sxd.app_stm_002.AppStm002Application -p 2 -yid application_1533530382764_0001 -nm  -d
+
+
+flink run -j poc_drools-1.0-SNAPSHOT.jar -c com.sxd.citic.drools.main.AppWork -p 6 -yid application_1533530382764_0001
+
+
+flink run -j bigdata_flink-1.0-SNAPSHOT.jar  -p 2 -yid application_1532516463978_0001 -c com.bigdata.flink.java.demo.StreamWordCountDemo wordcount -d
+
+
+-------------------------------------创建TOPIC-------------------------------------------------
+kafka-topics.sh --list --zookeeper 192.168.112.101:2181
+
+kafka-topics.sh --zookeeper 192.168.112.101:2181 --create --replication-factor 1 --partitions 2 --topic pocsrc
+
+
+kafka-topics.sh --zookeeper 192.168.112.101:2181 --create --replication-factor 1 --partitions 2 --topic testdata2
+
+kafka-topics.sh --zookeeper 192.168.112.101:2181 --create --replication-factor 1 --partitions 2 --topic poclog
+
+------------------------------------生产和消费-----------------------------------------------------
+
+kafka-console-producer.sh --broker-list 192.168.112.101:9092 --topic pocsrc11
+
+kafka-console-consumer.sh --bootstrap-server 192.168.112.101:9092 --topic pocsrc1
+
+
+
+
+[
+{
+  "properties": {
+    "storeNbr": {
+      "type": "text",
+      "fielddata": true
+    }
+  }
+}
+,
+
+{
+  "properties": {
+    "deptNbr": {
+      "type": "text",
+      "fielddata": true
+    }
+  }
+}
+,
+
+{
+  "properties": {
+    "tradeDate": {
+      "type": "text",
+      "fielddata": true
+    }
+  }
+}
+,
+
+{
+  "properties": {
+    "bthId": {
+      "type": "text",
+      "fielddata": true
+    }
+  }
+}
+,
+
+{
+  "properties": {
+    "itemNbr": {
+      "type": "text",
+      "fielddata": true
+    }
+  }
+}
+
+]
