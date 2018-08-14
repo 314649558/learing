@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="Maven 1" modules="poc_drools">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="D:\workspace\git\poc_parent\poc_drools\target/.scala_dependencies" />
+      </parameters>
+    </profile>
+    <profile name="Maven 2" modules="poc_cep">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="D:\workspace\git\poc_parent\poc_cep\target/.scala_dependencies" />
+      </parameters>
+    </profile>
+  </component>
+</project>

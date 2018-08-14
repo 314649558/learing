@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Main-Class: com.sxd.app_stm_002.AppStm002Application
+

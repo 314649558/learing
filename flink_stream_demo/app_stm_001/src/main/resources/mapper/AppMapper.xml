@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sxd.app_stm_001.app.mapper.AppMapper">
+
+    <resultMap id="app" type="com.sxd.app_stm_001.app.entity.App">
+        <id column="app_id" property="appId"></id>
+        <result column="app_name" property="appName"></result>
+        <result column="app_desc" property="appDesc"></result>
+        <result column="status" property="status"></result>
+        <association property="source" javaType="source">
+            <id column="ds_id" property="dsId"></id>
+            <result column="ds_kafka_hosts" property="kafkaHosts"></result>
+            <result column="ds_zokkeeper_host" property="zokkeeperHost"></result>
+            <result column="ds_topic" property="topic"></result>
+            <result column="ds_groups" property="groups"></result>
+            <result column="ds_status" property="status"></result>
+            <collection property="fields" ofType="sourceField">
+                <id column="dsf_field_id" property="fieldId"></id>
+                <result column="ds_id" property="dsId"></result>
+                <result column="dsf_name" property="name"></result>
+                <result column="dsf_data_type" property="dataType"></result>
+                <result column="dsf_comment" property="comment"></result>
+                <result column="dsf_sort_" property="sort"></result>
+                <result column="dsf_status" property="status"></result>
+            </collection>
+        </association>
+        <association property="channel" javaType="channel">
+            <id column="cn_id" property="cnId"></id>
+            <result column="cn_kafka_hosts" property="kafkaHosts"></result>
+            <result column="cn_zokkeeper_host" property="zokkeeperHost"></result>
+            <result column="cn_topic" property="topic"></result>
+            <result column="cn_groups" property="groups"></result>
+            <result column="cn_status" property="status"></result>
+            <collection property="fields" ofType="channelField">
+                <id column="cnf_field_id" property="fieldId"></id>
+                <result column="cn_id" property="cnId"></result>
+                <result column="cnf_name" property="name"></result>
+                <result column="cnf_data_type" property="dataType"></result>
+                <result column="cnf_comment" property="comment"></result>
+                <result column="cnf_sort_" property="sort"></result>
+                <result column="cnf_status" property="status"></result>
+            </collection>
+        </association>
+    </resultMap>
+
+
+
+    <select id="getApp" parameterType="string" resultMap="app">
+        SELECT app.*,
+            ds.kafka_hosts AS ds_kafka_hosts,ds.zokkeeper_host AS ds_zokkeeper_host,ds.topic AS ds_topic,ds.groups AS ds_groups,ds.status AS ds_status,
+            cn.kafka_hosts AS cn_kafka_hosts,cn.zokkeeper_host AS cn_zokkeeper_host,cn.topic AS cn_topic,cn.groups AS cn_groups,cn.status AS cn_status,
+            dsf.field_id as dsf_field_id,dsf.name as dsf_name,dsf.data_type as dsf_data_type,dsf.comment as dsf_comment,dsf.sort_ as dsf_sort_,dsf.status as dsf_status,
+            cnf.field_id as cnf_field_id,cnf.name as cnf_name,cnf.data_type as cnf_data_type,cnf.comment as cnf_comment,cnf.sort_ as cnf_sort_,cnf.status as cnf_status
+        FROM im_app app INNER  JOIN im_data_source_kafka ds ON app.ds_id = ds.ds_id  INNER JOIN im_channel_kafka cn ON app.cn_id = cn.cn_id
+            INNER JOIN im_data_source_field  dsf ON dsf.ds_id = ds.ds_id
+            INNER JOIN im_channel_field cnf ON cnf.cn_id = cn.cn_id
+        WHERE app_id = #{appId}
+    </select>
+
+
+</mapper>

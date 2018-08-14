@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/poc_cep/poc_cep.iml" filepath="$PROJECT_DIR$/poc_cep/poc_cep.iml" />
+      <module fileurl="file://$PROJECT_DIR$/poc_drools/poc_drools.iml" filepath="$PROJECT_DIR$/poc_drools/poc_drools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/poc_parent.iml" filepath="$PROJECT_DIR$/poc_parent.iml" />
+    </modules>
+  </component>
+</project>

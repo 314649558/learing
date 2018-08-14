@@ -1,0 +1,20 @@
+package rules.st;
+
+dialect "java"
+
+import com.google.gson.JsonObject
+import org.apache.commons.lang3.StringUtils
+import com.sxd.app_stm_001.scala.utils.JsonUtils
+
+ rule "kafka_log"
+    lock-on-active true
+    when jsonObj:JsonObject(StringUtils.containsIgnoreCase(jsonObj.toString(),"costAmt"),StringUtils.containsIgnoreCase(jsonObj.toString(),"retailAmt"),StringUtils.containsIgnoreCase(jsonObj.toString(),"netSalesAmt"))
+    then
+       double costAmt=jsonObj.get("costAmt").getAsDouble();
+       double retailAmt=jsonObj.get("retailAmt").getAsDouble();
+       double netSalesAmt=jsonObj.get("netSalesAmt").getAsDouble();
+       jsonObj.addProperty("imPct",(retailAmt-costAmt)/retailAmt);
+       jsonObj.addProperty("toSalesPct",costAmt/retailAmt);
+       update(jsonObj)
+       //System.out.println(JsonUtils.toJson(jsonObj));
+    end

@@ -1,0 +1,28 @@
+app:
+  appId: 2
+  appName: app_stm_001
+
+spring:
+    datasource:
+      #url: jdbc:mysql://211.162.122.33:13306/im_app?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+      #url: jdbc:mysql://192.168.132.214:3306/im_app?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+      url: jdbc:mysql://localhost:3306/im_app?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+      username: root
+      #password: Abcd.123
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+
+    #data:
+        #elasticsearch:
+          #cluster-nodes: 192.168.132.215:9300,192.168.132.216:9300,192.168.132.217:9300
+          #cluster-name: es-cluster
+    #      repositories:
+    #        enabled: true
+
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.sxd.app_stm_001.app.entity
+  configuration:
+    map-underscore-to-camel-case: true
