@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bigdata_flink" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bigdata_netty" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bigdata_sampler" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bigdata_spark" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bigdata_zookeeper" charset="UTF-8" />

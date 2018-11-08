@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/bigdata_flink/bigdata_flink.iml" filepath="$PROJECT_DIR$/bigdata_flink/bigdata_flink.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bigdata_netty/bigdata_netty.iml" filepath="$PROJECT_DIR$/bigdata_netty/bigdata_netty.iml" />
       <module fileurl="file://$PROJECT_DIR$/bigdata_parent.iml" filepath="$PROJECT_DIR$/bigdata_parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/bigdata_sampler/bigdata_sampler.iml" filepath="$PROJECT_DIR$/bigdata_sampler/bigdata_sampler.iml" />
       <module fileurl="file://$PROJECT_DIR$/bigdata_spark/bigdata_spark.iml" filepath="$PROJECT_DIR$/bigdata_spark/bigdata_spark.iml" />
