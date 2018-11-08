@@ -1,0 +1,6 @@
+1 本章主要是对Google Protobuf 序列化框架的介绍
+
+通过proto文件生成java文件步骤
+
+1 定义proto文件 如SubscribeReq.proto
+2 执行 protoc --java_out=.\dir SubscribeReq.proto  注意 这个dir表示输出目录 如果没有需要自己手动创建 ，否则会报错

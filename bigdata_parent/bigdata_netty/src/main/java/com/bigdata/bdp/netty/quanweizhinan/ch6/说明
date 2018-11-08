@@ -1,0 +1,25 @@
+本章主要介绍java自带的一些编码技术的优缺点
+1 JDK1.1自带的序列化无法跨语言
+2 编码后 码流太大，从而导致需要占用更多的存储空间以及在网络传输的时候带来更多的延迟
+3 序列化性能太低
+
+
+案例说明
+UserInfoPoJo 是测试的POJO对象
+
+TestUserinfo：
+主要用于测试码流大小 JDK自带的ObjectInputStream和ObjectOutputStream 编码后和NIO中ButeBuffer编码后码流大小
+
+PerformTestuserInfo：
+主要用于测试JDK自带的序列化和NIO序列化的耗时，既性能对比，从测试中我们可以开到NIO序列化性能是JDK原生的10倍之多
+
+
+Apache Thirft 主要有5部分组成
+1 语言系统以及IDL编译器：负责有用户给定的IDL文件生成相应的语言接口代码
+2 TProtocol: RPC的协议层，可以选择多种不同的对象序列化方式，如JSON和二进制
+3 TTransport: RPC的传输层，同样可以选择不同的传输层实现，如socket ,NIO,MemoryBuffer等
+4 TProcessor: 作为协议层和用户提供的服务实现之间的纽带，负责调用服务实现的接口。
+5 TServer: 聚合Tprotocol , TTransport 和TProcessor等对象
+
+
+Google Protobuf

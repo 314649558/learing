@@ -1,0 +1,11 @@
+1 本章是黏报拆包问题的解决
+1.1 根目录下的是由黏包问题的代码
+1.2 ninobaochaibao 是可以解决黏包拆包问题的代码
+   主要利用LineBasedFrameDecoder 和 StringDecoder来解决 黏包问题
+   现在对这两个类进行简要说明
+   1 LineBasedFrameDecoder 的工作原理是他会依次遍历ByteBuf中的可读字节，如果读取到了换行符"\n"或"\rn"，就以此位置结束。
+     他还可以配置一个读取的最大值，如果在读取到最大值的时候还没有读取到换号符，那么就会抛出异常，同事忽略掉之前读取到的异常码流
+
+   2 StringDecoder 是将接收到的对象转换为String,然后继续调用后面的Handler.
+     LineBasedFrameDecoder + StringDecoder 组合就是按行切换文本解码器。
+
