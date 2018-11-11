@@ -4,3 +4,13 @@
 
 1 定义proto文件 如SubscribeReq.proto
 2 执行 protoc --java_out=.\dir SubscribeReq.proto  注意 这个dir表示输出目录 如果没有需要自己手动创建 ，否则会报错
+
+
+注意事项
+ProtobufDecoder 仅仅负责解码，它不支持读半包。因此在ProtobufDecoder前面，一定要有能够处理半包的解码器，有以下三种选择
+1) 使用Netty提供的ProtoBbufVarint32FrameDecoder
+2) 继承LengthFieldBasedFrameDecoder
+3) 继承ByteToMessageDecoder类，自己处理半包消息
+
+
+
