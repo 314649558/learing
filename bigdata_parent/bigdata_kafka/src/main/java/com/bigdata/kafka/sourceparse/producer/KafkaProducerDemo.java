@@ -12,6 +12,8 @@ import java.util.Map;
  */
 public class KafkaProducerDemo {
 
+    // kafka-console-producer.sh --broker-list 192.168.112.100:9092 --topic testhl
+    // kafka-console-consumer.sh --bootstrap-server 192.168.112.100:9092 --topic testhl
 
     static String topic="testhl";
 
@@ -23,11 +25,11 @@ public class KafkaProducerDemo {
         kafkaParam.put("bootstrap.servers", KafkaConstants.KAFKA_BOOTSTRAP_SERVER);
         kafkaParam.put("key.serializer", KafkaConstants.KAFKA_SERIALIZER);
         kafkaParam.put("value.serializer", KafkaConstants.KAFKA_SERIALIZER);
-        kafkaParam.put("interceptor.classes", KafkaConstants.KAFKA_SERIALIZER);
+        kafkaParam.put("interceptor.classes", "com.bigdata.kafka.sourceparse.producer.MyProducerInterceptor");
 
         KafkaProducer<String,String> kafkaProducer=new KafkaProducer<String, String>(kafkaParam);
 
-        String msg="test kafka interceptor";
+        String msg="hailong test kafka interceptor";
 
         ProducerRecord<String,String> record=new ProducerRecord<String, String>(topic,"",msg);
 

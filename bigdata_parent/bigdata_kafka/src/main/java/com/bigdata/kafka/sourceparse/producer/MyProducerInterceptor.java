@@ -16,7 +16,7 @@ public class MyProducerInterceptor implements ProducerInterceptor<String,String>
         if(record.value().contains("hailong")){
             return record;
         }else {
-            return null;
+            return new ProducerRecord<String, String>(record.topic(),record.key(),"");
         }
     }
 
