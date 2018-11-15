@@ -26,6 +26,7 @@
         <module>bigdata_spark</module>
         <module>bigdata_flink</module>
         <module>bigdata_netty</module>
+        <module>bigdata_kafka</module>
     </modules>
 
 
