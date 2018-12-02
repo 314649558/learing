@@ -15,9 +15,6 @@ public class KafkaProducerDemo {
     // kafka-console-producer.sh --broker-list 192.168.112.100:9092 --topic testhl
     // kafka-console-consumer.sh --bootstrap-server 192.168.112.100:9092 --topic testhl
 
-    static String topic="testhl";
-
-
     public static void main(String[] args) {
 
         Map<String,Object> kafkaParam=new HashMap<>();
@@ -29,9 +26,9 @@ public class KafkaProducerDemo {
 
         KafkaProducer<String,String> kafkaProducer=new KafkaProducer<String, String>(kafkaParam);
 
-        String msg="hailong test kafka interceptor";
+        String msg="hailong";
 
-        ProducerRecord<String,String> record=new ProducerRecord<String, String>(topic,"",msg);
+        ProducerRecord<String,String> record=new ProducerRecord<String, String>(KafkaConstants.TOPIC,"1",msg);
 
         kafkaProducer.send(record);
         kafkaProducer.close();
