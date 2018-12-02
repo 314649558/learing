@@ -1,0 +1,15 @@
+servers.conf
+listeners=PLAINTEXT://0.0.0.0:9092
+
+
+jps | awk '{print $1}' | xargs -i kill -9 {}
+
+
+kafka-server-start.sh -daemon config/server.properties
+
+
+kafka-console-producer.bat --broker-list 192.168.112.100:9092 --topic testhl
+
+kafka-console-producer.sh --broker-list 192.168.112.100:9092 --topic testhl
+
+kafka-console-consumer.sh --bootstrap-server 192.168.112.100:9092 --topic testhl
