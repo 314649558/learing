@@ -1,0 +1,11 @@
+Kafka 身份认证过程
+ 以生产者为例
+ 1 生产者在初始化的时候初始化ChannelBuilder，这个类有多个子类
+ 2 根据不同的参数初始化不同的ChannelBuilder子类
+ 3 SaslChannelBuilder创建条件
+   3.1 security.protocol=SASL_PLAINTEXT
+   3.2 sasl.mechanism=SASL
+
+ 3 SaslChannelBuilder的buildChannel最终会创建KafkaChannel
+   在返回KafkaChannel之前会创建Authenticator类
+   Authenticator有不同的子类，authenticate是关键方法，他发送不同的请求类型到服务端确认是否认证通过，询问/响应的模式不断的切换状态直到认证完成或失败
