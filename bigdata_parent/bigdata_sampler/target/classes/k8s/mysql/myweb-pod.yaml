@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myweb
+  namespace: development
+  labels: myweb
+spec:
+  containers:
+  - name: myweb
+  image: kubeguide/tomcat-app:v1
+  ports:
+  - containerPort: 9988
+  env:
+  - name: MYSQL_SERVICE_HOST
+  value: 'mysql'
+  - name: MYSQL_SERVICE_PORT
+  value: '3306'

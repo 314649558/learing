@@ -1,0 +1,16 @@
+Kafka 底层使用yammer来收集各项指标，并结合JMX将指标进行输出
+
+
+yammer参考文档
+http://ju.outofmemory.cn/entry/105544
+
+官方文档
+https://metrics.dropwizard.io/3.1.0/getting-started/
+
+maven 依赖包
+<dependency>
+    <groupId>com.yammer.metrics</groupId>
+    <artifactId>metrics-core</artifactId>
+    <version>2.2.0</version>
+</dependency>
+
