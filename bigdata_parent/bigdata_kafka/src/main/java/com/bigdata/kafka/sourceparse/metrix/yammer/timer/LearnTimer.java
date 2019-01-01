@@ -8,7 +8,7 @@ import com.yammer.metrics.reporting.ConsoleReporter;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by Administrator on 2018/12/19.
+ * Created by yuanhailong on 2018/12/19.
  */
 public class LearnTimer {
     private Timer timer = Metrics.newTimer(LearnTimer.class, "response-timer", TimeUnit.MILLISECONDS, TimeUnit.SECONDS);
