@@ -1,0 +1,8 @@
+常用参数设置
+-xmn -xmx   heap设置
+-xss  stack设置
+
+GC信息打印参数设置
+-XX:+PrintGC
+-XX:+PrintGCDetails
+-XX:+PrintHeapAtGC
